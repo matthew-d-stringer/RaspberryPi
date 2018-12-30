@@ -3,12 +3,18 @@
  */
 package ManualPlaneControl;
 
-public class App {
-    public String getGreeting() {
-        return "Hello world.";
-    }
+import UDP.Client;
+import UDP.Server;
 
+public class App {
     public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
+        Server s = new Server();
+        s.start();
+        Client c = new Client("localhost", 4445);
+        System.out.println("Recieved: "+c.send("hello"));
+        System.out.println("Recieved: "+c.send("how r u"));
+        System.out.println("Recieved: "+c.send("no u"));
+        System.out.println("Recieved: "+c.send("goodbye"));
+        c.close();
     }
 }

@@ -30,3 +30,23 @@ dependencies {
 
 // Define the main class for the application
 mainClassName = 'ManualPlaneControl.App'
+
+run{
+    doFirst{
+        mainClassName = 'ManualPlaneControl.App'
+    }
+}
+
+task server{
+    run.doFirst{
+        mainClassName = 'UDP.Server'
+    }
+    dependsOn 'run'
+}
+
+task client{
+    run.doFirst{
+        mainClassName = 'UDP.Server'
+    }
+    dependsOn 'run'
+}
